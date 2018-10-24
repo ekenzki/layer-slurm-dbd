@@ -1,8 +1,8 @@
-name: slurm-dbd-v2
-summary: Slurm DBD v2
+name: slurm-dbd
+summary: Slurm DBD
 maintainer: Dmitrii Shcherbakov <dmitrii.shcherbakov@canonical.com>
 description: |
-  Slurm DBD v2.
+  Slurm DBD.
 tags:
   - slurm
 subordinate: false
@@ -11,10 +11,10 @@ series:
   - xenial
 provides:
   slurm-dbd:
-    interface: slurm-dbd-v2
+    interface: slurm-dbd
 requires:
   db-mysql:
     interface: mysql-shared
 peers:
   slurm-dbd-ha:
-    interface: slurm-dbd-ha-v2
+    interface: slurm-dbd-ha
