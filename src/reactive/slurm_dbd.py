@@ -18,8 +18,8 @@ flags.register_trigger(when='endpoint.slurm-dbd-ha.joined',
 
 @reactive.when_not('slurmdbd.installed')
 def install_slurm():
-    hookenv.status_set('maintenance', 'installing slurmdbd packages')
-    packages = [dbd.SLURMDBD_PACKAGE]
+    hookenv.status_set('maintenance', 'installing slurmdbd and slurm-client packages')
+    packages = [dbd.SLURMDBD_PACKAGE, dbd.SLURMCLIENT_PACKAGE]
     ch_fetch.apt_install(packages)
     hookenv.application_version_set(
         ch_fetch.get_upstream_version(dbd.SLURMDBD_PACKAGE))
@@ -133,6 +133,8 @@ def configure_dbd(mysql_endpoint):
         hookenv.log('dbd is configurable ({})'.format(role))
         # Setup slurm dirs and config
         dbd.render_slurmdbd_config(context=dbd_conf)
+        # Render a minimal dummy slurm.conf
+        dbd.render_slurm_config(context=dbd_conf)
         # Make sure slurmctld is running
         if not host.service_running(dbd.SLURMDBD_SERVICE):
             host.service_start(dbd.SLURMDBD_SERVICE)

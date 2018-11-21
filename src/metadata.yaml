@@ -10,7 +10,7 @@ series:
   - bionic
   - xenial
 provides:
-  slurm-dbd:
+  slurm-dbd-provider:
     interface: slurm-dbd
 requires:
   db-mysql:

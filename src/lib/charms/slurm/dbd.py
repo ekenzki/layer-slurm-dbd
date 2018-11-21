@@ -7,8 +7,13 @@ from charmhelpers.core.templating import render
 SLURMDBD_CONFIG_TEMPLATE = 'slurmdbd.conf'
 SLURMDBD_CONFIG_PATH = '/etc/slurm-llnl/slurmdbd.conf'
 
+SLURM_CONFIG_TEMPLATE = 'slurm.conf'
+SLURM_CONFIG_PATH = '/etc/slurm-llnl/slurm.conf'
+
 SLURMDBD_PACKAGE = 'slurmdbd'
 SLURMDBD_SERVICE = 'slurmdbd'
+
+SLURMCLIENT_PACKAGE = 'slurm-client'
 
 MUNGE_SERVICE = 'munge'
 MUNGE_KEY_TEMPLATE = 'munge.key'
@@ -25,6 +30,14 @@ def render_slurmdbd_config(context):
            group=context.get('slurm_user'),
            perms=0o644)
 
+def render_slurm_config(context):
+    # render a minimal slurm.conf so we can run sacctmgr
+    render(source=SLURM_CONFIG_TEMPLATE,
+           target=SLURM_CONFIG_PATH,
+           context=context,
+           owner=context.get('slurm_user'),
+           group=context.get('slurm_user'),
+           perms=0o644)
 
 def network_details():
     # even if there are no relations for that endpoint
