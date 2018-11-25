@@ -1,8 +1,8 @@
 name: slurm-dbd
 summary: Slurm DBD
-maintainer: Dmitrii Shcherbakov <dmitrii.shcherbakov@canonical.com>
+maintainer: Omnivector Solutions <info@omnivector.solutions>
 description: |
-  Slurm DBD.
+  Slurm DBD
 tags:
   - slurm
 subordinate: false
