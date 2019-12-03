@@ -5,4 +5,7 @@ includes:
   - 'interface:slurm-dbd'
   - 'interface:slurm-dbd-ha'
   - 'interface:mysql-shared'
+options:
+  basic:
+    python_packages: ['netifaces']
 repo: 'https://github.com/omnivector-solutions/layer-slurm-dbd'
